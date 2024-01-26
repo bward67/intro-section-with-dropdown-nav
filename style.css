@@ -1,0 +1,356 @@
+:root {
+  --clr-almost-white: hsl(0, 0%, 98%);
+  --clr-medium-gray: hsl(0, 0%, 41%);
+  --clr-almost-black: hsl(0, 0%, 8%);
+  --clr-gray-overlay: hsla(0, 0%, 41%, 0.3);
+
+  --fw-500: 500;
+  --fw-700: 700;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  font-size: 18px;
+  font-family: "Epilogue", sans-serif;
+  display: grid;
+  place-items: center;
+  color: var(--clr-medium-gray);
+}
+.container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+img {
+  max-width: 100%;
+}
+.list img {
+  width: 18px;
+  height: 20px;
+  margin-left: 0 !important;
+}
+h1 {
+  color: var(--clr-almost-black);
+  font-weight: var(--fw-700);
+  margin-block: 3rem 1.5rem;
+}
+h1 br {
+  display: none;
+}
+p {
+  line-height: 1.7;
+  padding-inline: 0.04rem;
+}
+a {
+  text-decoration: none;
+  font-family: inherit;
+  color: var(--clr-medium-gray);
+  cursor: pointer;
+}
+a:hover,
+.selected-title:hover {
+  color: var(--clr-almost-black);
+}
+.main-content {
+  text-align: center;
+}
+.logo-mobile {
+  padding: 0.5rem 0 0 1rem;
+}
+.nav {
+  display: flex;
+  padding: 1rem 1rem;
+  position: relative; /*and nav-mobile will be absolute*/
+}
+.nav-desktop {
+  display: none;
+  font-size: 1rem;
+}
+.selected-title {
+  height: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+.selected-title img {
+  margin-left: 0.6rem;
+}
+.hamburger-icon {
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+  z-index: 2;
+  visibility: visible;
+}
+.logo {
+  margin-top: 1rem;
+}
+
+.nav-mobile {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 65%;
+  background-color: #ffffff;
+  height: 100vh;
+  padding: 5rem 1.5rem;
+  visibility: hidden;
+  font-size: 1rem;
+}
+.overlay {
+  background-color: var(--clr-gray-overlay);
+}
+
+.list {
+  visibility: hidden;
+  margin: 2rem 0 2rem 1.3rem;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.list3 {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.nav__right {
+  text-align: center;
+  font-size: 1rem;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding-inline: 1rem;
+  flex-wrap: wrap; /*so they don't get cut off on the right-hand side*/
+}
+footer img {
+  width: 20%;
+}
+
+.login {
+  cursor: pointer;
+  margin-top: 3rem;
+}
+
+.line-height-lg {
+  height: 13rem;
+}
+.line-height-sml {
+  height: 10rem;
+}
+.btn-light {
+  color: var(--clr-medium-gray);
+  border-radius: 13px;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--clr-medium-gray);
+  cursor: pointer;
+  margin-block: 0.5rem 3rem;
+  font-weight: var(--fw-700);
+  font-size: 1.1rem;
+  width: 100%;
+  background-color: transparent;
+}
+.btn-transparent {
+  color: var(--clr-medium-gray);
+  border-radius: 13px;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  margin-block: 1.5rem 0;
+  font-weight: var(--fw-700);
+  font-size: 1.1rem;
+  width: 100%;
+  cursor: pointer;
+  background-color: transparent;
+}
+.btn-dark {
+  background-color: var(--clr-almost-black);
+  color: var(--clr-almost-white);
+  border-radius: 13px;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  margin-block: 1/5rem 3rem;
+  font-weight: var(--fw-700);
+  font-size: 1.1rem;
+}
+.btn-dark:hover,
+.btn-dark:focus {
+  cursor: pointer;
+  background-color: var(--clr-almost-white);
+  color: var(--clr-almost-black);
+  border: 1px solid var(--clr-almost-black);
+}
+.btn-light:hover,
+.btn-transparent:hover {
+  color: var(--clr-almost-black);
+}
+.btn-light:hover {
+  border-color: var(--clr-almost-black);
+}
+.active .arrow-down {
+  transform: rotate(180deg);
+  transition: 0.2s;
+  /*I love this it eliminates the need for an arrow up button
+    SO CLEVER*/
+}
+.active {
+  visibility: visible;
+}
+
+/*FOR DESKTOP*/
+@media (min-width: 568px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+    flex-direction: row;
+    grid-area: container;
+  }
+  .grid {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /*so that both columns are the same width */
+    grid-template-rows: 150px 1fr;
+    grid-template-areas:
+      "nav nav"
+      "container container";
+    gap: 2rem 3rem;
+  }
+  .logo-mobile,
+  .nav-mobile {
+    display: none;
+  }
+  h1 br {
+    display: block;
+  }
+  .nav {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    grid-area: nav;
+    height: 100px;
+  }
+  .main-content {
+    flex-basis: 55%;
+    padding-right: 4rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero {
+    flex-basis: 45%;
+  }
+  .nav-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .nav__main-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav__right-dt {
+    font-size: 1rem;
+  }
+  .logo {
+    width: 60px;
+    margin-top: 6px;
+  }
+  .nav__right-dt,
+  .list3-dt {
+    display: flex;
+    gap: 2rem;
+  }
+  .nav__left-categories-dt {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .main-content p {
+    font-size: 0.9rem;
+    margin-right: 4.8rem;
+  }
+  .nav {
+    padding-top: 0;
+  }
+  .main-content h1 {
+    font-size: 4rem;
+    margin-block: 4.5rem 0;
+  }
+  .btn-dark {
+    font-size: 0.85rem;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    width: 30%;
+    margin: 0;
+  }
+  .btn-transparent,
+  .btn-light {
+    margin: 0;
+    padding: 0.5rem;
+  }
+  footer {
+    padding: 0;
+  }
+  .overlay {
+    background-color: transparent;
+  }
+  .hamburger-icon {
+    visibility: hidden;
+  }
+  .list {
+    background-color: #ffffff;
+    box-shadow: 0 0 20px 3px var(--clr-gray-overlay);
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: grid;
+    gap: 0.8rem;
+    position: absolute;
+    top: 5rem;
+    visibility: hidden;
+  }
+  .list-one {
+    position: absolute;
+    top: 35px;
+    left: 26px;
+  }
+  .list-two {
+    position: absolute;
+    top: 35px;
+    left: 200px;
+  }
+  .nav-desktop .list {
+    padding: 1.5rem 1rem;
+  }
+  .list-text-dt {
+    margin-left: 0.7rem;
+  }
+  .active {
+    visibility: visible;
+    /*MUST have this again here in order to see the list boxes*/
+  }
+  .selected-title {
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+  .selected-title img {
+    margin-left: 0.2rem;
+  }
+}
